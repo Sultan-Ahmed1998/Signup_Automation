@@ -1,5 +1,7 @@
 package basicPurpose;
 
+import java.util.Set;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -36,11 +38,16 @@ public class SignUpPageAutomation {
 		driver.findElement(By.xpath("//select[@id='CategoryId']")).click();
 		Thread.sleep(2000);
 		
+		Set<String> handels = driver.getWindowHandles();
+		
+		for (String ami : handels) {
+		
+		driver.switchTo().window(ami);
 		driver.findElement(By.xpath("//option[@value='4']")).click();
 		Thread.sleep(2000);
 		
-		driver.findElement(By.xpath("//select[@id='CategoryId']")).click();
-		Thread.sleep(2000);
+		}
+		
 		
 		driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("test@gmail.com");
 		Thread.sleep(2000);
